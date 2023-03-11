@@ -30,64 +30,57 @@ class AirHero(SuperHero):
         self.fly = fly
 
     def double_health(self):
-        self.health_points **= 2
         self.fly = True
+        return f"double health: {self.health_points ** 2}"
 
     def fly_phrase(self):
-        if self.fly:
-            return "I'm flying!"
-        else:
-            return "I'm not flying."
+        print(f'fly in the {self.fly}_phrase')
+
 
 class EarthHero(SuperHero):
     people = 'earth'
 
-    def __init__(self, name, nickname, superpower, health_points, catchphrase, damage, fly=False):
+    def __init__(self, name, nickname, superpower, health_points, catchphrase, damage= False, fly=False):
         super().__init__(name, nickname, superpower, health_points, catchphrase)
         self.damage = damage
         self.fly = fly
 
     def double_health(self):
-        self.health_points **= 2
         self.fly = True
+        return f"double health: {self.health_points ** 2}"
 
     def fly_phrase(self):
-        if self.fly:
-            return "I'm flying!"
-        else:
-            return "I'm not flying."
+        print(f'fly in the {self.fly}_phrase')
 
 class Villain(AirHero):
-    people = 'monster'
+    SuperHero.people = 'monster'
 
     def gen_x(self):
         pass
 
-    def crit(self, damage):
-        return damage ** 2
+    def crit(self, hero):
+            return f"damage of EarthHero: {hero.damage ** 2}"
+
 
 air = AirHero('Peter Parker', 'AirHero', 'able to fly and shoot webs', 100, "With great power comes great responsibility", 20)
 print(air.get_name())
-air.double_health()
+print(air.double_health())
 print(air)
 air.fly_phrase()
 
 earth = EarthHero('Bruce Banner', 'EarthHero', 'turns into a green monster', 200, "You wouldn't like me when I'm angry", 20)
 print(earth.get_name())
-earth.double_health()
+print(earth.double_health())
 print(earth)
 earth.fly_phrase()
 
-villain = Villain('Tom Hardy', 'Venom', 'alien symbiote with spider-like powers', 150, 'We are Venom!', 25)
-print(villain.get_name())
-villain.double_health()
-print(villain)
-villain.fly_phrase()
+villain1 = Villain('Tom Hardy', 'Venom', 'alien symbiote with spider-like powers', 150, 'We are Venom!', 25)
+print(villain1.get_name())
+villain1.double_health()
+print(villain1)
+villain1.fly_phrase()
 
-damage = 5
-print(f"Damage: {damage}")
-print(f"Crit damage: {villain.crit(damage)}")
-
+print(Villain.crit(villain1, earth))
 
 
 
@@ -96,5 +89,4 @@ print(f"Crit damage: {villain.crit(damage)}")
 # Hero.double_health()
 # print(Hero)
 # print(len(Hero))
-
 
