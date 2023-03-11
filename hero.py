@@ -59,7 +59,7 @@ class Villain(AirHero):
         pass
 
     def crit(self, hero):
-            return f"damage of EarthHero: {hero.damage ** 2}"
+        return f"damage of EarthHero: {hero.damage ** 2}"
 
 
 air = AirHero('Peter Parker', 'AirHero', 'able to fly and shoot webs', 100, "With great power comes great responsibility", 20)
